@@ -1,0 +1,7 @@
+docker run -d --rm -v /home/ayu/Desktop/docker_bret/04.docker_multi_container/mongodata:/data/db --network app-net --env-file .env --name mongodb mongo
+
+
+docker run --rm --name backend --network app-net -v $(pwd):/backend/ -v logs:/backend/logs -v /backend/node_modules -e MONGODB_U=ayu -p 80:80  backend
+
+
+docker run -it --rm --name frontend -v /home/ayu/Desktop/docker_bret/04.docker_multi_container/frontend/src:/frontend/src -p 3000:3000 frontend
